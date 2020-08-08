@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <script>
+        function loadBankDetails()
+        {
+            var bank=document.getElementById("bank");
+            var bankName=document.querySelector("#bankName");
+            var address=document.querySelector("#address");
+            var branch=document.querySelector("#branch");
+            var ifsc=document.querySelector("#ifsc");
+            var city=document.querySelector("#city");
+            var state=document.querySelector("#state");
+            var district=document.querySelector("#district");
+            var urlParams = new URLSearchParams(window.location.search);
+            var bankDetails=window.localStorage.getItem(urlParams.get("ifsc"));
+            var bankAccount=JSON.parse(bankDetails);
+            bankName.innerHTML=bankAccount["bank_name"];
+            address.innerHTML=bankAccount["address"];
+            branch.innerHTML=bankAccount["branch"];
+            ifsc.innerHTML=bankAccount["ifsc"];
+            city.innerHTML=bankAccount["city"];
+            state.innerHTML=bankAccount["state"];
+            district.innerHTML=bankAccount["district"];
+        }
+        window.addEventListener('load',loadBankDetails);
+    </script>
+</head>
+<body>
+    <div id=bank style="text-align: center;">
+        <h1 id=bankName></h1>
+        <br>
+        <h3 id="address"></h3>
+        <br>
+        
+        <h3 id="branch"></h3>
+        <br>
+        
+        <h3 id="ifsc"></h3>
+        <br>
+
+        <h3 id="district"></h3>
+        <br>
+
+        <h3 id="city"></h3>
+        <br>
+        
+        <h3 id="state"></h3>
+        <br>
+    </div>
+</body>
+</html>

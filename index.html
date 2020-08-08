@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <style>
+    #loader { 
+            border: 12px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 12px solid #444444; 
+            width: 70px; 
+            height: 70px; 
+            animation: spin 1s linear infinite; 
+        } 
+          
+        @keyframes spin { 
+            100% { 
+                transform: rotate(360deg); 
+            } 
+        } 
+          
+        .center1 { 
+            position: absolute; 
+            top: 0; 
+            bottom: 0; 
+            left: 0; 
+            right: 0; 
+            margin: auto; 
+        } 
+    .center 
+    {
+    text-align: center;
+    font-size: 18px;
+    }
+    .currentPageNumberButton 
+    {
+    background:#606060;
+    color:white;
+    margin-left:5px;
+    margin-right:5px;
+    padding: 5px;
+    cursor: pointer; 
+    }
+    .pageNumberButton 
+    {
+    background:black;
+    color:white;
+    margin-left:5px;
+    margin-right:5px;
+    padding: 5px;
+    cursor: pointer; 
+    }
+  </style>
+  <script>
+    function BankAccountService()
+    {
+      this.getBankAccountDetails=function(onSuccess){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            setTimeout(function(){
+            document.getElementById('interactiver');
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('BankAccountModuleContainer').style.visibility="visible";
+            },1000);
+            onSuccess(JSON.parse(this.responseText));
+        }
+        else if (this.readyState!=4) {
+            document.getElementById('BankAccountModuleContainer').style.visibility="hidden";
+            document.querySelector( "#loader").style.visibility = "visible"; 
+        }
+        };
+        xhttp.open("GET", "https://vast-shore-74260.herokuapp.com/banks?city=BANGALORE", true);
+        xhttp.send();
+      }
+      this.getMumbaiBankAccountDetails=function(onSuccess){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            setTimeout(function(){
+            document.getElementById('interactiver');
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('BankAccountModuleContainer').style.visibility="visible";
+            },1000);
+            onSuccess(JSON.parse(this.responseText));
+        }
+        else if (this.readyState!=4) {
+            document.getElementById('BankAccountModuleContainer').style.visibility="hidden";
+            document.querySelector( "#loader").style.visibility = "visible";
+        }
+        };
+        xhttp.open("GET", "https://vast-shore-74260.herokuapp.com/banks?city=MUMBAI", true);
+        xhttp.send();
+      }
+      this.getDelhiBankAccountDetails=function(onSuccess){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            setTimeout(function(){
+            document.getElementById('interactiver');
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('BankAccountModuleContainer').style.visibility="visible";
+            },1000);
+            onSuccess(JSON.parse(this.responseText));
+        }
+        else if (this.readyState!=4) {
+            document.getElementById('BankAccountModuleContainer').style.visibility="hidden";
+            document.querySelector( "#loader").style.visibility = "visible";
+        }
+        
+        };
+        xhttp.open("GET", "https://vast-shore-74260.herokuapp.com/banks?city=DELHI", true);
+        xhttp.send();
+      }
+      this.getKolkataBankAccountDetails=function(onSuccess){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            setTimeout(function(){
+            document.getElementById('interactiver');
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('BankAccountModuleContainer').style.visibility="visible";
+            },1000);
+            onSuccess(JSON.parse(this.responseText));
+        }
+        else if (this.readyState!=4) {
+            document.getElementById('BankAccountModuleContainer').style.visibility="hidden";
+            document.querySelector( "#loader").style.visibility = "visible";
+        }
+        };
+        xhttp.open("GET", "https://vast-shore-74260.herokuapp.com/banks?city=KOLKATA", true);
+        xhttp.send();
+      }
+      this.getCuttackBankAccountDetails=function(onSuccess){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            setTimeout(function(){
+            document.getElementById('interactiver');
+            document.getElementById('loader').style.visibility="hidden";
+            document.getElementById('BankAccountModuleContainer').style.visibility="visible";
+            },1000);
+            onSuccess(JSON.parse(this.responseText));
+        }
+        else if (this.readyState!=4) {
+            document.getElementById('BankAccountModuleContainer').style.visibility="hidden";
+            document.querySelector( "#loader").style.visibility = "visible";
+        }
+        };
+        xhttp.open("GET", "https://vast-shore-74260.herokuapp.com/banks?city=CUTTACK", true);
+        xhttp.send();
+      }
+    }
+    function BankAccountModel()
+    {
+      this.pageSizes=[];
+      this.cities=[];
+      this.pageSize=0;
+      this.pageSize="";
+      this.pageNumber=0;
+      this.numberOfPages=0;
+      this.bankAccounts=[];
+      this.originalBankAccounts=[];
+      this.numberOfPageNumberButtons=0;
+    }
+
+    function BankAccountView(vBankAccountModel)
+    {
+      this.onPageChanging=null;
+      this.onPageSizeChanged=null;
+      var bankAccountModel=vBankAccountModel;
+      var bankAccountViewTHIS=this;
+      this.onPageChanging=null;
+      this.onPageSizeChanged=null;
+      var name,bankId,branch,ifsc;
+      this.update=function(){
+      var bankAccountModuleContainer=document.getElementById("BankAccountModuleContainer");
+      var pageSize=bankAccountModuleContainer.querySelector("#pageSize");
+      pageSize.addEventListener('change',function(){
+        var newPageSize=bankAccountModel.pageSizes[this.selectedIndex];
+        if(bankAccountModel.pageSize!=newPageSize)
+        {
+          if(bankAccountViewTHIS.onPageSizeChanged) bankAccountViewTHIS.onPageSizeChanged(newPageSize);
+        }
+      });
+      var searchCity=bankAccountModuleContainer.querySelector("#city");
+      searchCity.addEventListener('change',function(){
+        var newCityName=bankAccountModel.cities[this.selectedIndex];
+        if(bankAccountModel.cityName!=newCityName)
+        {
+          if(bankAccountViewTHIS.onCityChanged) bankAccountViewTHIS.onCityChanged(newCityName);
+        }
+      });
+      searchCity.length=0;
+      bankAccountModel.cities.forEach(function(city){
+        var option=document.createElement("option");
+        option.text=city;
+        option.value=city;
+        if(bankAccountModel.cityName==city) option.selected=true;
+        searchCity.add(option);
+      });
+      var searchBank=bankAccountModuleContainer.querySelector("#searchBank");
+      searchBank.addEventListener('input',function(){
+        bankAccountViewTHIS.onBankAccountSearching(searchBank.value);
+      });
+      var goToButton=bankAccountModuleContainer.querySelector("#goToButton");
+      var goToPageNumber=bankAccountModuleContainer.querySelector("#goToPageNumber");
+      goToButton.addEventListener('click',function(){
+        if(bankAccountViewTHIS.onPageChanging)
+        {
+          bankAccountViewTHIS.onPageChanging(goToPageNumber.value);
+        }
+      });
+      var paginationButtonsSection=bankAccountModuleContainer.querySelector("#BankAccountPaginationButtons");
+      var numberOfPages=bankAccountModuleContainer.querySelector("#numberOfPages");
+      var pageNumber=bankAccountModuleContainer.querySelector("#pageNumber");
+      pageNumber.innerHTML=bankAccountModel.pageNumber;
+      numberOfPages.innerHTML=bankAccountModel.numberOfPages;
+      pageSize.length=0;
+      bankAccountModel.pageSizes.forEach(function(size){
+        var option=document.createElement("option");
+        option.text=size;
+        option.value=size;
+        if(bankAccountModel.pageSize==size) option.selected=true;
+        pageSize.add(option);
+      });
+      var tableBody=bankAccountModuleContainer.querySelector("#BankAccountTable").getElementsByTagName("tbody")[0];
+      while(tableBody.rows.length>0) tableBody.deleteRow(0);
+      if(vBankAccountModel.bankAccounts.length>0)
+      {
+        var fromIndex=(bankAccountModel.pageNumber-1)*bankAccountModel.pageSize;
+        var uptoIndex=fromIndex+bankAccountModel.pageSize-1;
+        if(uptoIndex>bankAccountModel.bankAccounts.length) uptoIndex=bankAccountModel.bankAccounts.length-1;
+        var index=0;
+        var bankAccount=null;
+        var row,name,branch,ifsc,bank_id;
+        function createPageNumberButtonClickHandler(pageNumber)
+        {
+          return function(){
+          if(bankAccountViewTHIS.onPageChanging) bankAccountViewTHIS.onPageChanging(pageNumber);
+          };
+        }
+        for(var i=fromIndex;i<=uptoIndex;i++)
+        {
+            bankAccount=bankAccountModel.bankAccounts[i];
+            window.localStorage.setItem(bankAccount["ifsc"],JSON.stringify(bankAccount));
+            row=tableBody.insertRow(index);
+            row.style.cursor="pointer";
+            name=row.insertCell(0);
+            bank_id=row.insertCell(1);
+            ifsc=row.insertCell(2);
+            branch=row.insertCell(3);
+            name.appendChild(document.createTextNode(bankAccount["bank_name"]));
+            bank_id.appendChild(document.createTextNode(bankAccount["bank_id"]));
+            ifsc.appendChild(document.createTextNode(bankAccount["ifsc"]));
+            branch.appendChild(document.createTextNode(bankAccount["branch"]));
+            row.addEventListener('click',function(){
+                window.open("bankdetails.html?ifsc="+bankAccount["ifsc"],"_parent");
+
+            });
+        }
+
+      }
+      var paginationButtonStartsFrom;
+      var paginationButtonEndsAt;
+      if(bankAccountModel.pageNumber%bankAccountModel.numberOfPageNumberButtons==0)
+      {
+        paginationButtonStartsFrom=(Math.floor((bankAccountModel.pageNumber)/bankAccountModel.numberOfPageNumberButtons)*bankAccountModel.numberOfPageNumberButtons)+1;
+      }
+      else
+      {
+        paginationButtonStartsFrom=(Math.floor(bankAccountModel.pageNumber/bankAccountModel.numberOfPageNumberButtons)*bankAccountModel.numberOfPageNumberButtons)+1;
+      }
+      paginationButtonEndsAt=paginationButtonStartsFrom+bankAccountModel.numberOfPageNumberButtons-1;
+      if(paginationButtonEndsAt>bankAccountModel.numberOfPages)
+      {
+        paginationButtonEndsAt=bankAccountModel.numberOfPages;
+      }
+      var paginationTable=document.createElement("table");
+      var row=paginationTable.insertRow(0);
+      var cell;
+      var textNode;
+      var cellIndex=0;
+      if(paginationButtonStartsFrom>1)
+      {
+        cell=row.insertCell(0);
+        textNode=document.createTextNode(1);
+        cell.appendChild(textNode);
+        cell.classList.add("pageNumberButton");
+        cell.addEventListener('click',createPageNumberButtonClickHandler(1));
+        cell=row.insertCell(1);
+        textNode=document.createTextNode(".......");
+        cell.appendChild(textNode);
+        cell=row.insertCell(2);
+        textNode=document.createTextNode("Prev");
+        cell.appendChild(textNode);
+        cell.addEventListener('click',createPageNumberButtonClickHandler(paginationButtonStartsFrom-1));
+        cell.classList.add("pageNumberButton");
+        cellIndex=3;
+      }
+      var k=paginationButtonStartsFrom;
+      while(k<=paginationButtonEndsAt)
+      {
+        cell=row.insertCell(cellIndex);
+        textNode=document.createTextNode(k);
+        cell.appendChild(textNode);
+        if(k==bankAccountModel.pageNumber)
+        {
+          cell.classList.add("currentPageNumberButton");
+        }
+        else
+        {
+          cell.classList.add("pageNumberButton");
+          cell.addEventListener('click',createPageNumberButtonClickHandler(k));
+        }
+        cellIndex++;
+        k++;
+      }
+      if(paginationButtonEndsAt<bankAccountModel.numberOfPages)
+      {
+        cell=row.insertCell(cellIndex);
+        textNode=document.createTextNode("Next");
+        cell.appendChild(textNode);
+        cell.addEventListener('click',createPageNumberButtonClickHandler(paginationButtonEndsAt+1));
+        cell.classList.add("pageNumberButton");
+        cellIndex++;
+        cell=row.insertCell(cellIndex);
+        textNode=document.createTextNode(".......");
+        cell.appendChild(textNode);
+        cellIndex++;
+        cell=row.insertCell(cellIndex);
+        textNode=document.createTextNode(bankAccountModel.numberOfPages);
+        cell.appendChild(textNode);
+        cell.addEventListener('click',createPageNumberButtonClickHandler(bankAccountModel.numberOfPages));
+        cell.classList.add("pageNumberButton");
+      }
+      while(paginationButtonsSection.hasChildNodes()) paginationButtonsSection.removeChild(paginationButtonsSection.firstChild);
+      paginationButtonsSection.appendChild(paginationTable);
+      goToPageNumber.value=bankAccountModel.pageNumber;
+      goToPageNumber.max=bankAccountModel.numberOfPages;
+    }
+    }
+
+    function BankAccountController(vBankAccountModel,vBankAccountService,vBankAccountView)
+    {
+      var bankAccountModel=vBankAccountModel;
+      var bankAccountService=vBankAccountService;
+      var bankAccountView=vBankAccountView;
+      var foundAt;
+      function createPageNumberButtonClickHandler(pageNumber)
+      {
+      return function(){
+        if(bankAccountViewTHIS.onPageChanging) bankAccountViewTHIS.onPageChanging(pageNumber);
+      };
+      }
+      bankAccountView.onBankAccountSearching=function(searchText)
+      {
+        searchText=searchText.toUpperCase();
+        var searchedBankAccount=[];
+        for(var i=0;i<bankAccountModel.originalBankAccounts.length;i++)
+        {
+          if(bankAccountModel.originalBankAccounts[i]["branch"].includes(searchText))
+          {
+            searchedBankAccount.push(bankAccountModel.originalBankAccounts[i]);
+          }
+        }
+        bankAccountModel.bankAccounts=searchedBankAccount;
+        bankAccountModel.pageNumber=1;
+        bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+        bankAccountView.update();
+      }
+      bankAccountView.onCityChanged=function(newCityName)
+      {
+        if(newCityName==="BANGALORE")
+        {
+          bankAccountService.getBankAccountDetails(function(bankAccounts){
+          bankAccountModel.bankAccounts=bankAccounts;
+          bankAccountModel.pageNumber=1;
+          bankAccounts.searchBank="";
+          bankAccountModel.cityName="BANGALORE";
+          bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+          bankAccountView.update();
+        });
+        }
+        else if(newCityName==="DELHI")
+        {
+          bankAccountService.getDelhiBankAccountDetails(function(bankAccounts){
+          bankAccountModel.bankAccounts=bankAccounts;
+          bankAccountModel.pageNumber=1;
+          bankAccounts.searchBank="";
+          bankAccountModel.cityName="DELHI";
+          bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+          bankAccountView.update();
+        });
+        }
+        else if(newCityName==="MUMBAI")
+        {
+          bankAccountService.getMumbaiBankAccountDetails(function(bankAccounts){
+          bankAccountModel.bankAccounts=bankAccounts;
+          bankAccountModel.pageNumber=1;
+          bankAccountModel.searchBank=""
+          bankAccountModel.cityName="MUMBAI";
+          bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+          bankAccountView.update();
+        });
+        }
+        else if(newCityName==="KOLKATA")
+        {
+          bankAccountService.getKolkataBankAccountDetails(function(bankAccounts){
+          bankAccountModel.bankAccounts=bankAccounts;
+          bankAccountModel.pageNumber=1;
+          bankAccountModel.cityName="KOLKATA";
+          bankAccountModel.searchBank=""
+          bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+          bankAccountView.update();
+        });
+        }
+        else if(newCityName==="CUTTACK")
+        {
+          bankAccountService.getCuttackBankAccountDetails(function(bankAccounts){
+          bankAccountModel.bankAccounts=bankAccounts;
+          bankAccountModel.pageNumber=1;
+          bankAccountModel.cityName="CUTTACK";
+          bankAccountModel.searchBank="";
+          bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+          bankAccountView.update();
+        });
+        }
+      }
+      bankAccountView.onPageSizeChanged=function(newPageSize)
+      {
+        var recordNumber;
+        if(bankAccountModel.selectedbankAccount)
+        {
+          var si=((bankAccountModel.pageNumber-1)*bankAccountModel.pageSize);
+          var ei=si+bankAccountModel.pageSize-1;
+          for(var i=si;i<=ei;i++)
+          {
+            if(bankAccountModel.bankAccounts[i]==bankAccountModel.selectedbankAccount)
+            {
+              recordNumber=i+1;
+              break;
+            }
+          }
+        }
+        else
+        {
+          recordNumber=((bankAccountModel.pageNumber-1)*bankAccountModel.pageSize)+1;
+        }
+        var newPageNumber=Math.ceil(recordNumber/newPageSize);
+        bankAccountModel.pageSize=newPageSize;
+        bankAccountModel.pageNumber=newPageNumber;
+        bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+        bankAccountView.update();
+      }
+      bankAccountView.onPageChanging=function(pageNumber)
+      {
+        bankAccountModel.pageNumber=pageNumber;
+        bankAccountModel.selectedbankAccount=null;
+        bankAccountView.update();
+      }
+      bankAccountModel.pageSizes=[5,10,15,20,25,30,35,40,45,50];
+      bankAccountModel.cities=["BANGALORE","MUMBAI","DELHI","KOLKATA","CUTTACK"];
+      bankAccountModel.pageSize=5;
+      bankAccountModel.cityName="BANGALORE";
+      bankAccountModel.pageNumber=0;
+      bankAccountModel.numberOfPages=0;
+      bankAccountModel.bankAccounts=[];
+      bankAccountModel.originalBankAccounts=[];
+      bankAccountModel.numberOfPageNumberButtons=7;
+      bankAccountView.update();
+      bankAccountService.getBankAccountDetails(function(bankAccounts){
+      bankAccountModel.originalBankAccounts=bankAccounts;
+      bankAccountModel.bankAccounts=bankAccounts;
+      bankAccountModel.pageNumber=1;
+      bankAccountModel.numberOfPages=Math.ceil(bankAccountModel.bankAccounts.length/bankAccountModel.pageSize);
+      bankAccountView.update();
+      });
+    }
+
+
+    function BankAccountModule()
+    {
+      var model=new BankAccountModel();
+      var service=new BankAccountService();
+      var view=new BankAccountView(model);
+      var controller=new BankAccountController(model,service,view);
+    }
+    var bankAccountModule=null;
+    function setupBankAccountModule()
+    {
+      BankAccountModule=new BankAccountModule();
+    }
+    window.addEventListener('load',setupBankAccountModule);
+  </script>
+
+</head>
+<body>
+    <div id='loader' class='center1'></div>
+  <div id='BankAccountModuleContainer'>
+    <div id='header'>
+      <span id='title'></span>
+    </div>
+
+<nav class="navbar navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Banks Search Application</a>
+  <select class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="city">
+  </select>
+ <div 
+  <a class="navbar-brand" href="#">Search</a>
+  <input type='text' id='searchBank' placeholder='Search'>
+  </div>
+  <br>
+  
+  <select class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id='pageSize'>
+  </select>
+  </nav>
+  <div class="center">
+  <br>
+  <span  id='pageNumber'></span>/<span  id='numberOfPages'></span> <div>
+  <br>
+  
+  <div class="container">
+  <table class="table table-hover table-dark" id='BankAccountTable'>
+    <thead>
+      <tr>
+        <th>Name</th><th>Bankid</th><th>IFSC</th><th>Branch</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  </div>
+  <div class="container" id='BankAccountPaginationButtons'></div>
+  <div class="center">
+  GoTo <input  type='number' id='goToPageNumber' min='1' max='10'>
+  <button type='button' class="btn btn-dark" id='goToButton'>Go</Button>
+  </div>
+</body>
+</html>
