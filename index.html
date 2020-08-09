@@ -60,10 +60,9 @@
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             setTimeout(function(){
-            document.getElementById('interactiver');
             document.getElementById('loader').style.visibility="hidden";
             document.getElementById('BankAccountModuleContainer').style.visibility="visible";
-            },1000);
+            },100);
             onSuccess(JSON.parse(this.responseText));
         }
         else if (this.readyState!=4) {
@@ -79,10 +78,9 @@
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
             setTimeout(function(){
-            document.getElementById('interactiver');
             document.getElementById('loader').style.visibility="hidden";
             document.getElementById('BankAccountModuleContainer').style.visibility="visible";
-            },1000);
+            },100);
             onSuccess(JSON.parse(this.responseText));
         }
         else if (this.readyState!=4) {
@@ -98,10 +96,9 @@
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             setTimeout(function(){
-            document.getElementById('interactiver');
             document.getElementById('loader').style.visibility="hidden";
             document.getElementById('BankAccountModuleContainer').style.visibility="visible";
-            },1000);
+            },100);
             onSuccess(JSON.parse(this.responseText));
         }
         else if (this.readyState!=4) {
@@ -118,10 +115,9 @@
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             setTimeout(function(){
-            document.getElementById('interactiver');
             document.getElementById('loader').style.visibility="hidden";
             document.getElementById('BankAccountModuleContainer').style.visibility="visible";
-            },1000);
+            },100);
             onSuccess(JSON.parse(this.responseText));
         }
         else if (this.readyState!=4) {
@@ -137,10 +133,9 @@
         xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             setTimeout(function(){
-            document.getElementById('interactiver');
             document.getElementById('loader').style.visibility="hidden";
             document.getElementById('BankAccountModuleContainer').style.visibility="visible";
-            },1000);
+            },100);
             onSuccess(JSON.parse(this.responseText));
         }
         else if (this.readyState!=4) {
@@ -365,7 +360,7 @@
         var searchedBankAccount=[];
         for(var i=0;i<bankAccountModel.originalBankAccounts.length;i++)
         {
-          if(bankAccountModel.originalBankAccounts[i]["branch"].includes(searchText))
+          if(bankAccountModel.originalBankAccounts[i]["branch"].includes(searchText)||bankAccountModel.originalBankAccounts[i]["ifsc"].includes(searchText)||bankAccountModel.originalBankAccounts[i]["bank_name"].includes(searchText)||bankAccountModel.originalBankAccounts[i]["ifsc"].includes(searchText))
           {
             searchedBankAccount.push(bankAccountModel.originalBankAccounts[i]);
           }
