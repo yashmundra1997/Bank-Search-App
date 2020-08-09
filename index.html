@@ -241,6 +241,7 @@
           if(bankAccountViewTHIS.onPageChanging) bankAccountViewTHIS.onPageChanging(pageNumber);
           };
         }
+        while(tableBody.rows.length>0) tableBody.deleteRow(0);
         for(var i=fromIndex;i<=uptoIndex;i++)
         {
             bankAccount=bankAccountModel.bankAccounts[i];
@@ -256,9 +257,12 @@
             ifsc.appendChild(document.createTextNode(bankAccount["ifsc"]));
             branch.appendChild(document.createTextNode(bankAccount["branch"]));
             row.addEventListener('click',function(){
-                window.open("bankdetails.html?ifsc="+bankAccount["ifsc"],"_parent");
+              var rowClicked=this;
+              var idx=((bankAccountModel.pageNumber-1)*bankAccountModel.pageSize)+rowClicked.rowIndex-1;
+                window.open("bankdetails.html?ifsc="+bankAccountModel.bankAccounts[idx]["ifsc"],"_parent");
 
             });
+            index++;
         }
 
       }
@@ -266,7 +270,8 @@
       var paginationButtonEndsAt;
       if(bankAccountModel.pageNumber%bankAccountModel.numberOfPageNumberButtons==0)
       {
-        paginationButtonStartsFrom=(Math.floor((bankAccountModel.pageNumber)/bankAccountModel.numberOfPageNumberButtons)*bankAccountModel.numberOfPageNumberButtons)+1;
+        paginationButtonStartsFrom=(Math.floor((bankAccountModel.pageNumber-1)/bankAccountModel.numberOfPageNumberButtons)*bankAccountModel.numberOfPageNumberButtons)+1;
+        if(paginationButtonStartsFrom<0) paginationButtonStartsFrom=1;
       }
       else
       {
